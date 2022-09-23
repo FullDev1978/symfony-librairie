@@ -1,0 +1,20 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        editeurs:
+            uri_prefix: /images/editeurs
+            upload_destination: '%kernel.project_dir%/public/images/editeurs'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+        livres:
+            uri_prefix: /images/livres
+            upload_destination: '%kernel.project_dir%/public/images/livres'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+        auteurs:
+            uri_prefix: /images/auteurs
+            upload_destination: '%kernel.project_dir%/public/images/auteurs'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+        carousels:
+            uri_prefix: /images/carousels
+            upload_destination: '%kernel.project_dir%/public/images/carousels'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer

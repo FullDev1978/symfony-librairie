@@ -1,0 +1,39 @@
+{% extends 'base-backend.html.twig' %}
+
+{% block title %}Carousel index{% endblock %}
+
+{% block body %}
+    <h1>Carousel index</h1>
+    <a href="{{ path('app_admin_carousel_new') }}" class="btn btn-dark">Nouveau</a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>ImageName</th>
+                <th>Titre</th>
+                <th>Texte</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for carousel in carousels %}
+            <tr>
+                <td>{{ carousel.id }}</td>
+                <td>{{ carousel.imageName }}</td>
+                <td>{{ carousel.titre }}</td>
+                <td>{{ carousel.texte }}</td>
+                <td>
+                    <a href="{{ path('app_admin_carousel_show', {'id': carousel.id}) }}" class="btn btn-dark"><i class="align-middle" data-feather="eye"></i></a>
+                    <a href="{{ path('app_admin_carousel_edit', {'id': carousel.id}) }}" class="btn btn-success ms-2"><i class="align-middle" data-feather="edit-2"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Aucun fichier trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

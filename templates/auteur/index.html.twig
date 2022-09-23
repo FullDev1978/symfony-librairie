@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Les auteurs
+{% endblock %}
+
+{% block body %}
+    <main class="container bg-white shadow">
+    <form action="{{ path('app_auteur_search') }}" method="post">
+    <div class="form-group">
+        <input type="text" class="form-control" name="search-value" required>
+        <button type="submit" class="btn btn-primary">Rechercher</button>
+    </div>
+    </form>
+        <h1>
+            Les auteurs
+        </h1>
+        <div class="row">
+            {% for auteur in auteurs %}
+            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 d-flex flex-wrap mb-3">
+                <div class="card ">
+                    {% if auteur.imageName is not null %}
+                    <img src="{{ asset('images/auteurs/' ~ auteur.imageName) }}" class="card-img-top" alt="...">
+                    {% else %}
+                    <img src="{{ asset('images/avatar2.png') }}" class="card-img-top" alt="...">
+                    {% endif %}
+                    <div class="card-body d-flex flex-wrap justify-content-center">
+                    <h5 class="card-title w-100 text-center">
+                    {% if auteur.peseudo is not null %}
+                        {{ auteur.peseudo }}
+                    {% else %}
+                        {{ auteur.nom }} {% if auteur.prenom is not null %} {{ auteur.prenom }} {% endif %}
+                    {% endif %}
+                    </h5>
+                    <a href="{{ path('app_auteur_show', {'id': auteur.id}) }}" class="btn btn-primary align-self-end">
+                        Voir la fiche
+                    </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </main>
+
+    {% endblock %}
+    

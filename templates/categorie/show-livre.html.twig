@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ livre.titre }}{% endblock %}
+
+{% block body %}
+<main class="container bg-white shadow">
+<h1>{{ livre.titre}}</h1>
+    <div>Auteur(s) :</div>
+<div class="row">
+    {% for auteur in livre.auteurs %}
+    <a href="{{ path('app_auteur_show', {'id': auteur.id}) }}">
+    {% if auteur.peseudo is not null%}
+    {{ auteur.peseudo }}
+    {% else %}
+    {{ auteur.nom }} {% if auteur.prenom is not null %} {{ auteur.prenom }} {% endif %}
+    {% endif %}
+</a>
+   
+{% endfor %}
+</div>
+<div class="row mt-4">
+    <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+        <img src="{{ asset('images/livres/' ~ livre.imageName) }}" alt="" class="img-fluid">
+</div>
+<div class="col-12 col-md-6 col-lg-8 col-xl-9">
+<div> {{ livre.description|raw }}</div>
+</div>
+</main>
+{% endblock %}

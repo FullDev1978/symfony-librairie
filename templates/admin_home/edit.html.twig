@@ -1,0 +1,15 @@
+{% extends 'base-backend.html.twig' %}
+
+{% block title %}Modifier Home{% endblock %}
+
+{% block body %}
+    <a href="{{ path('app_admin_home_index') }}">Retour à la liste</a>
+    <h1>Modifier Home</h1>
+
+    {{ include('admin_home/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+
+    {{ include('admin_home/_delete_form.html.twig') }}
+{% endblock %}
+
+{% block javascripts %}{% endblock %}

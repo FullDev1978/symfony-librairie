@@ -1,0 +1,11 @@
+{% extends 'base-backend.html.twig' %}
+
+{% block title %}Npouveau LivreImage{% endblock %}
+
+{% block body %}
+<a href="{{ path('app_admin_livre_image_index') }}" class="btn btn-dark">Retour à la liste</a>
+    <h1>Créer nouveau LivreImage</h1>
+
+    {{ include('admin_livre_image/_form.html.twig') }}
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    {% if auteur.peseudo is not null %}
+        {{ auteur.peseudo }}
+    {% else %}
+        {{ auteur.nom }}
+        {% if auteur.prenom is not null %}
+            {{ auteur.prenom }}
+        {% endif %}
+    {% endif %}
+{% endblock %}
+{% block body %}
+    <main class="container bg-white shadow">
+        <h1>
+            {% if auteur.peseudo is not null %}
+                {{ auteur.peseudo }}
+            {% else %}
+                {{ auteur.nom }}
+                {% if auteur.prenom is not null %}
+                    {{ auteur.prenom }}
+                {% endif %}
+            {% endif %}
+        </h1>
+        <div class="row">
+            <div class=" col-12 col-md-4 col-lg-3">
+                {% if auteur.imageName is not null %}
+                    <img src="{{ asset('images/auteurs/' ~ auteur.imageName) }}" class="img-fluid" alt="">
+                    {% endif %}
+            </div>
+            <div class="col-12 col-md-8 col-lg-9">
+                    {% if auteur.biographie is not null %}
+                        {{ auteur.biographie|raw }}
+                    {% else %}
+                        Aucune description disponible
+                                                            
+                                            
+                    {% endif %}
+            </div>
+        </div>
+    </main>
+    {% endblock %}
+    
